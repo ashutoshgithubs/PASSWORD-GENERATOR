@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="fevicon.png" type="image/png">
+    <title>Password Generator &#127919;</title>
+    <style>
+        .display::placeholder {
+        position:absolute;
+        top: 50%;
+        left: 1.5rem;
+        font-size: 1.5rem;
+        line-height:30px;
+        color:yellowgreen;
+        opacity: 0.65;
+        text-transform: uppercase;
+        transform: translateY(-50%);
+    }
+
+    .check input:checked::before {
+    content: '✔';
+    position: absolute;
+    color: var(--dk-text);
+    font-size:1.05rem;
+    font-weight: 300;
+    left:50%;
+    top:-3.5px;
+    transform: translateX(-50%)  translateY(8%);
+}
+.cpyicon.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .slider::-webkit-slider-thumb {
+    position:relative;
+    z-index:1;
+    appearance: none;
+    height:2rem;
+    width:2rem;
+    border-radius: 50%;
+    background-color: yellowgreen;
+    cursor:pointer;
+    margin-top: -3px;
+    box-shadow: 0px 0px 20px 0px rgba(255, 229, 61, 0.50);
+    transition: all 100ms ease-in;
+}
+.slider:focus{
+    outline: 3px solid yellowgreen;
+}
+.slider::-webkit-slider-thumb:hover{
+    outline: 2px solid yellowgreen;
+    background-color: yellow;
+    box-shadow: 0px 0px 25px 5px rgba(255, 229, 61, 0.80);
+}
+    </style>
+</head>
+<body>
+    <section class="w-[100vw] h-[100vh] flex flex-col items-center justify-center" style=" background:url(https://media.istockphoto.com/id/1219671535/photo/blue-and-pink-underground-cyber-security-hologram-with-digital-shield-3d-rendering.jpg?b=1&s=170667a&w=0&k=20&c=RMb7SShCM4DYUw4W4q1s5e8WyKoaqd4tpSqLU-cj3Fc=);background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="max-w-md w-11/12">
+            <p class="text-center tracking-wider text-3xl bg-clip-text text-transparent font-bold bg-gradient-to-r from-purple-400 to-rose-600">PASSWORD GENERATOR</p>
+            <div class="relative bg-[#160628] rounded-md border-b-4 border-[#58077d] mt-4 pt-1.5">
+                <input readonly placeholder="PASSWORD" class="display w-full bg-transparent p-4 text-yellow-400 font-semibold text-2xl tracking-wider pr-12" displayPassword>
+                <button datacpy class="absolute top-1/2 right-4 -translate-y-2/4">
+                    <span textMsg class="cpyicon absolute bg-[#871c9c] text-yellow-400 text-lg -top-12 -left-6 rounded-md p-1 scale-0 opacity-0 origin-bottom "></span>
+                    <img src="copy.svg" alt="cpu-icon" width="23" height="23">
+                </button>
+            </div>
+        
+            <div class="w-full bg-[#160628] rounded-md p-4 border-b-4 border-[#58077d] mt-3">
+                <div class="flex justify-between items-center">
+                    <p class="text-white text-xl">Password length</p>
+                    <div data-lengthNumber class="text-yellow-400 text-xl">0</div>
+                </div>
+             
+                <input type="range" min="0" max="20" step="1" data-lengthSlider class="slider appearance-none w-full h-3 cursor-pointer bg-[#341c4f] rounded-lg mt-4 mb-2 -z-1" style="background-image: linear-gradient(	#bc15f4,#bc15f4);background-repeat: no-repeat;
+                border:none;
+                outline:none">
+                <div class="check flex items-center mt-4 mb-4 gap-x-0 gap-y-4">
+                    <input type="checkbox" id="uppercase" class="relative appearance-none w-5 h-5 border border-[#00e0d1] cursor-pointer rounded-md checked:bg-[#00e0d1]">
+                    <label for="uppercase" class="text-white text-lg pl-2">Includes Uppercase letters</label>
+                </div>
+                <div class="check flex items-center mt-4 mb-4 gap-x-0 gap-y-4">
+                    <input type="checkbox" id="lowercase" class="relative appearance-none w-5 h-5 border border-[#00e0d1] cursor-pointer rounded-md checked:bg-[#00e0d1]">
+                    <label for="lowercase" class="text-white text-lg pl-2">Includes Lowercase letters</label>
+                </div>
+                <div class="check flex items-center mt-4 mb-4 gap-x-0 gap-y-4">
+                    <input type="checkbox" id="numbers" class="relative appearance-none w-5 h-5 border border-[#00e0d1] cursor-pointer rounded-md checked:bg-[#00e0d1]">
+                    <label for="numbers" class="text-white text-lg pl-2">Includes Numbers</label>
+                </div>
+                <div class="check flex items-center mt-4 mb-4 gap-x-0 gap-y-4">
+                    <input type="checkbox" id="symbols" class="relative appearance-none w-5 h-5 border border-[#00e0d1] cursor-pointer rounded-md checked:bg-[#00e0d1]">
+                    <label for="symbols" class="text-white text-lg pl-2">Includes Symbols</label>
+                </div>
+                    
+               <div class="strength-container flex justify-between item-center mt-7 mb-8">
+                <p class="text-white text-xl">Strength</p>
+                <div data-indicator class="w-6 h-6 rounded-full"></div>
+               </div>
+               <button class="generateButton w-full pt-4 pb-4 bg-[#bc15f4] text-center rounded-md border-b-4 border-[#ffe53d] uppercase font-semibold text-xl text-[#ffe53d] tracking-wide">Generate Password</button>
+            </div>
+        
+        </div>
+        
+    </section>
+    <script src="index.js"></script>
+</body>
+</html>
